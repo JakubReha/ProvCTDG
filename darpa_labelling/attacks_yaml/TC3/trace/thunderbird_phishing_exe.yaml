@@ -1,0 +1,9 @@
+attack_name: TC3_trace_thunderbird_phishing_exe
+time:
+  success:
+    start: 1523641800000000000
+    end: 1523643360000000000
+edge_file: 208
+mdep: 1
+nodesq: 'MATCH (n)-[r]->(m) WHERE r.edge_file=%d AND r.timestamp >= %d AND r.timestamp < %d AND (n.name="bash" OR n.name="thunderbird" OR n.name="chmod") AND (m.name="/home/admin/Desktop/tcexec" OR m.name="/tmp/mozilla_admin0/nZVga8l2.bin.part" OR m.name="tcexec") WITH collect(n.hash_id) + collect(m.hash_id) as allhashes UNWIND allhashes as ahash RETURN collect(DISTINCT ahash) as uniqhashes'
+edgesq: "MATCH path=(l)-[* ..%d ( e, l | e.edge_file=%d and e.timestamp >= %d AND e.timestamp < %d and l.name contains '.so')]->(c {hash_id: '%s'})-[* ..%d ( p, c | p.edge_file=%d and p.timestamp >= %d and p.timestamp < %d and c.name contains 'tcexec' or c.name contains 'bin.part' or c.hash_id = '28529167256143250')]-(z) UNWIND relationships(path) as allrel WITH DISTINCT allrel as rel where NOT (startswith(startNode(rel).name, '/proc/') OR startswith(endNode(rel).name, '/proc/') OR endNode(rel).name = 'fluxbox' OR startNode(rel).name =~ '.*\\\\.so[\\\\.0-9]*$' OR startNode(rel).name = '/dev/urandom' OR (startNode(rel).name = endNode(rel).name AND rel.name = 2)) RETURN collect(rel.hash_id, startNode(rel).hash_id) as edges"

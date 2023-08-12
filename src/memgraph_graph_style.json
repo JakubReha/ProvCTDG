@@ -1,0 +1,89 @@
+@NodeStyle {
+  size: 6
+  color: #DD2222
+  color-hover: Lighter(#DD2222)
+  color-selected: Lighter(#DD2222)
+  border-width: 0.6
+  border-color: #1d1d1d
+  font-size: 3
+}
+
+@NodeStyle HasLabel(node, "Node") {
+  color: #DD2222
+  color-hover: Lighter(#DD2222)
+  color-selected: Lighter(#DD2222)
+}
+
+@NodeStyle Greater(Size(Labels(node)), 0) {
+  label: Format(":{}", Join(Labels(node), " :"))
+}
+
+@NodeStyle HasProperty(node, "name") {
+  label: AsText(Property(node, "name"))
+}
+
+
+@NodeStyle Equals(Property(node, "type"), "Socket") {
+  shape: "diamond"
+  color: #FFFF00
+  color-hover: Lighter(#FFFF00)
+  color-selected: Lighter(#FFFF00)
+}
+
+@NodeStyle Equals(Property(node, "type"), "Process") {
+  shape: "square"
+}
+
+@NodeStyle Equals(Property(node, "type"), "File") {
+  color: #0000FF
+  color-hover: Lighter(#0000FF)
+  color-selected: Lighter(#0000FF)
+}
+
+Define(LATITUDE_FIELD, "lat")
+Define(LONGITUDE_FIELD, "lng")
+
+@NodeStyle And(IsNumber(Property(node, LATITUDE_FIELD)), IsNumber(Property(node, LONGITUDE_FIELD))) {
+  latitude: Property(node, LATITUDE_FIELD)
+  longitude: Property(node, LONGITUDE_FIELD)
+}
+
+@NodeStyle Equals(Property(node, "root_of"), 2460) {
+  color: #00FF00
+  color-hover: Lighter(#00FF00)
+  color-selected: Lighter(#00FF00)
+}
+
+
+@EdgeStyle {
+  color: #999999
+  color-hover: #1d1d1d
+  color-selected: #1d1d1d
+  width: 0.3
+  width-hover: 0.9
+  width-selected: 0.9
+  font-size: 3
+}
+
+@EdgeStyle HasProperty(edge, "name") {
+  label: AsText(Property(edge, "name"))
+}
+
+@EdgeStyle And(HasProperty(edge, "TGN_with_memory_pred_probs"), Greater(AsNumber(Property(edge, "TGN_with_memory_pred_probs")), 0.5)) {
+  color: #7FFF00
+  color-hover: Lighter(#7FFF00)
+  color-selected: Lighter(#7FFF00)
+  width:1.5
+}
+
+@EdgeStyle And(HasProperty(edge, "TGN_with_memory_pred_probs"), Less(AsNumber(Property(edge, "TGN_with_memory_pred_probs")), 0.5)) {
+  color: #DC143C
+  color-hover: Lighter(#DC143C)
+  color-selected: Lighter(#DC143C)
+  width:1.5
+}
+
+
+@ViewStyle.Map {
+  tile-layer: "light"
+}

@@ -1,0 +1,6 @@
+DATA
+**/.DS_Store
+darpa_preprocessing/data
+darpa_preprocessing/parse/lib
+**/__pycache__
+**/.ipynb_checkpoints

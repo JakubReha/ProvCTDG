@@ -1,0 +1,9 @@
+attack_name: TC3_trace_browser_extension
+time:
+  success:
+    start: 1523637780000000000
+    end: 1523638380000000000
+edge_file: 207
+mdep: 3
+nodesq: 'MATCH path=(n)-[r]->(m) WHERE r.edge_file=%d AND r.timestamp >= %d AND r.timestamp <= %d AND (n.name="gtcache" OR m.name="gtcache" OR n.name="pass_mgr" OR m.name="pass_mgr" OR n.name="ztmp" OR m.name="ztmp" OR n.name="sh" OR m.name="sh" OR n.name="uname" OR m.name="uname") WITH nodes(path) as nodes UNWIND nodes as anode WITH anode where NOT anode.name =~ "/proc/[0-9]+/stat" AND NOT anode.name =~ "128.55.12.73:[0-9]+" RETURN collect(DISTINCT anode.hash_id) as uniqhashes'
+edgesq: "MATCH path=(l)-[* ..%d ( e, l | e.edge_file=%d and e.timestamp >= %d AND e.timestamp <= %d)]->(c {hash_id: '%s'})-[* ..%d ( p, c | p.edge_file=%d and p.timestamp >= %d and p.timestamp <= %d)]->(z) UNWIND relationships(path) as allrel WITH DISTINCT allrel as rel where NOT (startswith(startNode(rel).name, '/proc/') OR startswith(endNode(rel).name, '/proc/') OR endNode(rel).name = 'fluxbox' OR startNode(rel).name =~ '.*\\\\.so[\\\\.0-9]*$' OR startNode(rel).name = '/dev/urandom' OR endNode(rel).name =~ '/run/user/[0-9]*/.*' OR (startNode(rel).name = endNode(rel).name AND rel.name = 2)) RETURN collect(rel.hash_id, startNode(rel).hash_id) as edges"

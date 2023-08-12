@@ -1,0 +1,15 @@
+19:40:29,490 | INFO | Connected to memgraph
+19:40:29,493 | INFO | Analyzing TC3_theia_firefox_backdoor attack
+19:40:29,494 | INFO | Extracting edges for category = all
+19:40:30,409 | INFO | Found 33 as starting nodes to build attack graph
+19:40:30,410 | INFO | Starting backward/forward search from each initial node found
+19:40:30,410 | WARNING | Overwriting command-line paramenter for mdep
+19:40:30,410 | INFO | Using DFS depth = 3
+19:40:50,477 | INFO | Extracting edges for category = success
+19:40:51,340 | INFO | Found 7 as starting nodes to build attack graph
+19:40:51,340 | INFO | Starting backward/forward search from each initial node found
+19:40:51,340 | WARNING | Overwriting command-line paramenter for mdep
+19:40:51,340 | INFO | Using DFS depth = 3
+19:40:55,624 | INFO | Merging the different category results for TC3_theia_firefox_backdoor
+19:40:55,630 | INFO | Saving results @ /root/jakub-reha/darpa_labelling/groundtruth/TC3_theia_firefox_backdoor.csv
+19:40:55,632 | INFO | DONE!

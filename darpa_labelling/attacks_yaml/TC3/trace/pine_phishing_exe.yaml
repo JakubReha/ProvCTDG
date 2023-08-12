@@ -1,0 +1,11 @@
+attack_name: TC3_trace_pine_phishing_exe
+time:
+  success:
+    start: 1523643600000000000 
+    end: 1523644200000000000
+edge_file: 208
+mdep: 2
+nodesq: 'MATCH (n)-[r]->(m) WHERE r.edge_file=%d AND r.timestamp >= %d AND r.timestamp < %d AND n.name = "tcexec" and m.name = "162.66.239.75:80" RETURN collect(DISTINCT n.hash_id) as uniqhashes'
+edgesq: "MATCH path=(l)-[* ..%d ( e, k | e.edge_file=%d and e.timestamp>=%d and e.timestamp <%d and not k.type = 'Socket')]->(c {hash_id: '%s'})-[* ..%d ( y, m | y.edge_file=%d and y.timestamp>=%d and y.timestamp<%d and not m.type = 'Socket')]->(z) UNWIND relationships(path) as allrel WITH DISTINCT allrel as rel where NOT (startswith(startNode(rel).name, '/dev/pts') OR startswith(endNode(rel).name, '/dev/pts') OR startNode(rel).name =~ '.*\\\\.so[\\\\.0-9]*$' OR startNode(rel).name = '/dev/urandom' OR (startNode(rel).name = endNode(rel).name AND rel.name = 2)) RETURN collect(rel.hash_id, startNode(rel).hash_id) as edges"
+extraq:
+  - 'MATCH(n)-[r]->(m) WHERE r.timestamp>=1523643600000000000 AND r.timestamp < 1523644200000000000 AND ((n.hash_id = "5268994886437381315" AND m.type= "Socket") OR (m.hash_id = "5268994886437381315" AND n.type= "Socket")) WITH DISTINCT r as rel RETURN collect(rel.hash_id, startNode(rel).hash_id) as edges'

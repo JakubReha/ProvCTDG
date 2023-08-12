@@ -1,0 +1,12 @@
+attack_name: TC3_theia_firefox_backdoor
+time:
+  all:
+    start: 1523385000000000000
+    end: 1523386800000000000
+  success:
+    start: 1523386592477156000
+    end: 1523386800000000000
+edge_file: 12
+mdep: 3
+nodesq: 'MATCH (n)-[r]->(m) WHERE r.edge_file=%d AND r.timestamp >= %d AND r.timestamp < %d AND (n.name="/home/admin/profile" OR n.name="/home/admin/clean" or n.name="profile" or m.name="clean") AND (m.name="profile" OR m.name="clean") WITH collect(n.hash_id) + collect(m.hash_id) as allhashes UNWIND allhashes as ahash RETURN collect(DISTINCT ahash) as uniqhashes'
+edgesq: "MATCH path=(l)-[* ..%d ( e, l | e.edge_file=%d and e.timestamp >= %d AND e.timestamp < %d)]->(c {hash_id: '%s'})-[* ..%d ( p, c | p.edge_file=%d and p.timestamp >= %d and p.timestamp < %d)]->(z) UNWIND relationships(path) as allrel WITH DISTINCT allrel as rel where NOT (startswith(startNode(rel).name, '/proc/') OR startswith(endNode(rel).name, '/proc/') OR startNode(rel).name =~ '.*\\\\.so[\\\\.0-9]*$' OR startNode(rel).name = '/dev/urandom' OR (startNode(rel).name = endNode(rel).name AND rel.name = 2) OR startNode(rel).name = 'fluxbox') RETURN collect(rel.hash_id, startNode(rel).hash_id) as edges"

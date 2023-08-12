@@ -1,0 +1,11 @@
+attack_name: TC3_trace_firefox_backdoor
+time:
+  success:
+    start: 1523371740000000000
+    end: 1523373060000000000
+  all:
+    start: 1523367960000000000
+    end: 1523373060000000000
+edge_file: 125
+nodesq: 'MATCH (n)-[r]->(m) where r.edge_file=%d and r.timestamp >= %d AND r.timestamp <= %d AND (n.name="cache" or m.name="cache" or n.name="firefox" or m.name="firefox") AND ((n.name="145.199.103.57:80" or m.name="145.199.103.57:80" or n.name="61.130.69.232:80" or m.name="61.130.69.232:80" or n.name="2.233.33.52:80" or m.name="2.233.33.52:80" or n.name="180.156.107.146:80" or m.name="180.156.107.146:80") OR (n.name="/home/admin/cache" or m.name="/home/admin/cache" or n.name="/var/log/xtmp" or m.name="/var/log/xtmp")) WITH collect(n.hash_id) + collect(m.hash_id) as allhashes UNWIND allhashes as hash RETURN collect(DISTINCT hash) as uniqhashes'
+edgesq: "MATCH path=(l)-[* ..%d ( e, l | e.edge_file=%d and e.timestamp >= %d AND e.timestamp <= %d)]->(c {hash_id: '%s'})-[* ..%d ( p, c | p.edge_file=%d and p.timestamp >= %d and p.timestamp <= %d)]->(z) UNWIND relationships(path) as allrel WITH DISTINCT allrel as rel where NOT (startswith(startNode(rel).name, '/proc/') OR startswith(endNode(rel).name, '/proc/') OR endNode(rel).name = 'fluxbox' OR startNode(rel).name =~ '.*\\\\.so[\\\\.0-9]*$' OR startNode(rel).name = '/dev/urandom' OR startswith(startNode(rel).name, '/home/admin/.mozilla/') OR startswith(endNode(rel).name, '/home/admin/.mozilla/') OR startswith(startNode(rel).name, '/home/admin/.cache/') OR startswith(endNode(rel).name, '/home/admin/.cache/') OR startNode(rel).name = 'crashreporter' OR endNode(rel).name = 'crashreporter' OR startswith(startNode(rel).name, '/tmp/') OR startswith(endNode(rel).name, '/tmp/') OR endNode(rel).name =~ '/run/user/[0-9]*/.*' OR (startNode(rel).name = endNode(rel).name AND rel.name = 2)) RETURN collect(rel.hash_id, startNode(rel).hash_id) as edges"
