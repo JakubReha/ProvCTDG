@@ -17,7 +17,7 @@ conda activate ctdg_pyg
 other dependencies: dask, gqalchemy, docker, natsorted, tqdm, wandb
 
 ## Table of Contents
-We provide pre-processed labeled data with feature extracted [here - TODO](https://notworking.com) and the extracted [groundtruth](darpa_labelling/groundtruth/). If you use this data, you can skip steps 1. to 6. and start directly at step 7..
+We provide pre-processed labeled data with feature extracted [here](https://github.com/JakubReha/ProvCTDG/releases/tag/v1.0.0.0) and the extracted [groundtruth](darpa_labelling/groundtruth/). If you use this data, you can skip steps 1. to 6. and start directly at step 7..
 
 1. Download data (Optional)
 2. Data preprocessing (Optional)
@@ -122,7 +122,7 @@ docker cp memgraph.conf trace:/etc/memgraph/memgraph.conf
 docker restart trace
 ```
 
-To use our Graph Style copy the content of memgraph_graph_style.json into the Graph Style Editor in your browser.
+To use our Graph Style copy the content of [memgraph_graph_style.json](memgraph_graph_style.json) into the Graph Style Editor in your browser.
 
 
 ## 4. Data labelling 
@@ -140,6 +140,7 @@ python process_data.py --dataset TRACE --save_folder save_folder --ground_truth_
 
 ## 6. Aggregate ground truth 
 The ground truth contains labels for the raw edges. If you want to visualize the ground truth or compute the statistics, aggregation is necessary:
+
 ```bash
 cd darpa_labelling/tools
 python aggregate.py --ground_truth_folder ground_truth_folder --edges_path edges_folder/edges.csv --dataset TRACE
@@ -161,7 +162,7 @@ Note that uploading is quite slow, therefore the code handles uploading only the
 ## 8. Train and Test Link Prediction (model selection)
 
 
-The datasets  in the `DATA` folder are split (ext_roll column in edges.csv) into train(0), validation(1) and test(2) sets in a way that the test set contains all the malicious attacks. The rest is split temporally in the ratio 0.85/0.15 into train and validation sets.
+The datasets in the `DATA` folder are split (ext_roll column in edges.csv) into train(0), validation(1) and test(2) sets in a way that the test set contains all the malicious attacks. The rest is split temporally in the ratio 0.85/0.15 into train and validation sets.
 
 Before training, set the hyperparameters and other settings (OHD-TGN, DIR-TGN, Hetero-TGN, HGT-TGN) in *conf.py*.
 

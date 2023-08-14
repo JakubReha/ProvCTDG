@@ -1,4 +1,5 @@
 DATA
+RESULTS
 **/.DS_Store
 darpa_preprocessing/data
 darpa_preprocessing/parse/lib
