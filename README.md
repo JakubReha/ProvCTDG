@@ -1,5 +1,16 @@
 # Continuous-Time Temporal Graph Learning on Provenance Graphs
+Official code repository for the paper "_Continuous-Time Temporal Graph Learning on Provenance Graphs_"
 
+Please consider citing us
+
+	@inproceedings{reha2023,
+	 	author = {Jakub Reha and Giulio Lovisotto and Michele Russo and Alessio Gravina and Claas Grohnfeldt},
+	 	title = {{Continuous-Time Temporal Graph Learning on Provenance Graphs}},
+	 	booktitle = {},
+	 	year = {2023},
+		 url = {}
+	}
+ 
 ## Requirements
 _Note: we assume [Miniconda/Anaconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html) and [Docker](https://docs.docker.com/engine/install/) are installed. The proper Python version is installed during the first step of the following procedure._
 
