@@ -1,4 +1,4 @@
-# Cyber Threat Detection using Machine Learning on Graphs
+# Continuous-Time Temporal Graph Learning on Provenance Graphs
 
 ## Requirements
 _Note: we assume [Miniconda/Anaconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html) and [Docker](https://docs.docker.com/engine/install/) are installed. The proper Python version is installed during the first step of the following procedure._
