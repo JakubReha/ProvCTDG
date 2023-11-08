@@ -1,11 +1,12 @@
-# Continuous-Time Temporal Graph Learning on Provenance Graphs
-Official code repository for the paper "_Continuous-Time Temporal Graph Learning on Provenance Graphs_"
+# Anomaly Detection in Continuous-Time Temporal Provenance Graphs
+
+Official code repository for the paper "_Anomaly Detection in Continuous-Time Temporal Provenance Graphs_"
 
 Please consider citing us
 
 	@inproceedings{reha2023,
 	 	author = {Jakub Reha and Giulio Lovisotto and Michele Russo and Alessio Gravina and Claas Grohnfeldt},
-	 	title = {{Continuous-Time Temporal Graph Learning on Provenance Graphs}},
+	 	title = {{Anomaly Detection in Continuous-Time Temporal Provenance Graphs}},
 	 	booktitle = {},
 	 	year = {2023},
 		 url = {}
