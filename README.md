@@ -1,15 +1,16 @@
 # Anomaly Detection in Continuous-Time Temporal Provenance Graphs
 
-Official code repository for the paper "_Anomaly Detection in Continuous-Time Temporal Provenance Graphs_"
+Official code repository for the paper "_Anomaly Detection in Continuous-Time Temporal Provenance Graphs_", which was accepted to Temporal Graph Learning Workshop @ NeurIPS 2023.
 
 Please consider citing us
 
-	@inproceedings{reha2023,
-	 	author = {Jakub Reha and Giulio Lovisotto and Michele Russo and Alessio Gravina and Claas Grohnfeldt},
-	 	title = {{Anomaly Detection in Continuous-Time Temporal Provenance Graphs}},
-	 	booktitle = {},
-	 	year = {2023},
-		 url = {}
+	@inproceedings{
+	reha2023anomaly,
+	title={Anomaly Detection in Continuous-Time Temporal Provenance Graphs},
+	author={Jakub Reha and Giulio Lovisotto and Michele Russo and Alessio Gravina and Claas Grohnfeldt},
+	booktitle={Temporal Graph Learning Workshop @ NeurIPS 2023},
+	year={2023},
+	url={https://openreview.net/forum?id=88tGIxxhsf}
 	}
  
 ## Requirements
